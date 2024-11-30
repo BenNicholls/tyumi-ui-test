@@ -3,3 +3,4 @@ go.work*
 log.txt
 *.dll
 *.exe
+.vscode/

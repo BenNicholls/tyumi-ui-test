@@ -6,15 +6,16 @@ import (
 	"github.com/bennicholls/tyumi/engine"
 	"github.com/bennicholls/tyumi/event"
 	"github.com/bennicholls/tyumi/gfx/col"
-	"github.com/bennicholls/tyumi/gfx/sdlrenderer"
 	"github.com/bennicholls/tyumi/gfx/ui"
 	"github.com/bennicholls/tyumi/input"
+	"github.com/bennicholls/tyumi/platform"
 	"github.com/bennicholls/tyumi/util"
 )
 
 func main() {
 	engine.InitConsole(40, 20)
-	err := engine.InitRenderer(sdlrenderer.New(), "res/curses24x24.bmp", "res/font12x24.bmp", "TEST WINDOW")
+	platform.Set(platform.SDL)
+	err := engine.SetupRenderer("res/curses24x24.bmp", "res/font12x24.bmp", "TEST WINDOW")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -79,7 +80,6 @@ func (ts *TestState) HandleInputs(e event.Event) {
 	switch e.ID() {
 	case input.EV_KEYBOARD:
 		ev := e.(input.KeyboardEvent)
-
 		if ev.Key == input.K_a {
 			item := ui.NewTextbox(15, 1, 0, 0, 1, "new item", false)
 			ts.list.AddElement(&item)
