@@ -1,5 +1,5 @@
-github.com/bennicholls/tyumi v0.0.0-20241129190941-eff386fe38c9 h1:O7yr0A+q82LyoGG9Q1kt7RX46v9ZQIEIvjLRgd2B/b8=
-github.com/bennicholls/tyumi v0.0.0-20241129190941-eff386fe38c9/go.mod h1:k52tpYV8k0TuDmDBIcbRgrmkttmWA8ySFHTE9IMrFZA=
+github.com/bennicholls/tyumi v0.0.0-20241130030050-61fad311ebb1 h1:7dyKCoIf5kcPfNXPCZp2o0oEnxMVsn9dST4Uvl6tjrg=
+github.com/bennicholls/tyumi v0.0.0-20241130030050-61fad311ebb1/go.mod h1:k52tpYV8k0TuDmDBIcbRgrmkttmWA8ySFHTE9IMrFZA=
 github.com/veandco/go-sdl2 v0.4.40 h1:fZv6wC3zz1Xt167P09gazawnpa0KY5LM7JAvKpX9d/U=
 github.com/veandco/go-sdl2 v0.4.40/go.mod h1:OROqMhHD43nT4/i9crJukyVecjPNYYuCofep6SNiAjY=
 golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f h1:XdNn9LlyWAhLVp6P/i8QYBW+hlyhrhei9uErw2B5GJo=
