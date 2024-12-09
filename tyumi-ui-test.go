@@ -25,6 +25,8 @@ func main() {
 
 	state := TestState{}
 	state.Setup()
+
+	//return
 	engine.InitMainState(&state)
 
 	engine.Run()
@@ -42,23 +44,23 @@ type TestState struct {
 func (ts *TestState) Setup() {
 	ts.Init(engine.FIT_CONSOLE, engine.FIT_CONSOLE)
 	ts.Window().SetDefaultColours(col.RED, col.LIME)
-	ts.text = ui.NewTextbox(ui.FIT_TEXT, ui.FIT_TEXT, vec.Coord{1, 1}, 1, "TEST STRING DO NOT UPVOTE", true)
+	ts.text = ui.NewTextbox(ui.FIT_TEXT, ui.FIT_TEXT, vec.Coord{1, 1}, 0, "TEST STRING DO NOT UPVOTE", true)
 	ts.text.SetDefaultColours(col.CYAN, col.FUSCHIA)
 	ts.text.EnableBorder("TEST TITLE", "TEST HINT")
 
 	text2 := ui.NewTextbox(10, ui.FIT_TEXT, vec.Coord{10, 5}, 1, util.LoremIpsum(30), true)
 	text2.EnableBorder("lorem", "")
-	ts.Window().AddElement(&ts.text, &text2)
+	ts.Window().AddChildren(&ts.text, &text2)
 	ts.AddInputHandler(ts.HandleInputs)
 
 	inputbox := ui.NewInputbox(10, 1, vec.Coord{25, 18}, 10)
 	inputbox.EnableBorder("inputs!", "do the input")
-	ts.Window().AddElement(&inputbox)
+	ts.Window().AddChild(&inputbox)
 
 	ts.list = ui.NewList(15, 10, vec.Coord{8, 8}, 10)
 	for i := 0; i < 20; i++ {
 		item := ui.NewTextbox(15, i%3+1, vec.ZERO_COORD, 1, "List item "+fmt.Sprint(i)+"/n", false)
-		ts.list.AddElement(&item)
+		ts.list.AddChild(&item)
 	}
 
 	ts.list.EnableBorder("LIST", "")
@@ -66,14 +68,11 @@ func (ts *TestState) Setup() {
 	ts.list.ToggleScrollbar()
 	ts.list.SetDefaultColours(col.BLUE, col.WHITE)
 
-	ts.Window().AddElement(&ts.list)
+	ts.Window().AddChild(&ts.list)
 }
 
 func (ts *TestState) Update() {
 	ts.tick++
-	if ts.tick%60 == 0 {
-		ts.text.Move(1, 0)
-	}
 }
 
 func (ts *TestState) UpdateUI() {
@@ -86,7 +85,7 @@ func (ts *TestState) HandleInputs(e event.Event) {
 		ev := e.(input.KeyboardEvent)
 		if ev.Key == input.K_a {
 			item := ui.NewTextbox(15, 1, vec.ZERO_COORD, 1, "new item", false)
-			ts.list.AddElement(&item)
+			ts.list.AddChild(&item)
 		} else if ev.Key == input.K_RIGHT {
 			ts.text.Move(1, 0)
 		}
